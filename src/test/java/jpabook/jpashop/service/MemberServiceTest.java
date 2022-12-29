@@ -32,7 +32,7 @@ class MemberServiceTest {
         Long savedId = memberService.join(member);
 
         //then
-        assertThat(member).isEqualTo(memberRepository.findMember(savedId));
+        assertThat(member).isEqualTo(memberRepository.findOne(savedId));
 
     }
 

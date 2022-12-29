@@ -43,7 +43,7 @@ public class MemberService {
 
     //회원 조회
     public Member findOne(Member member) {
-        return memberRepository.findMember(member.getId());
+        return memberRepository.findOne(member.getId());
     }
 
 }
