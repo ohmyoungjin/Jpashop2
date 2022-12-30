@@ -76,10 +76,19 @@ class OrderServiceTest {
     @Test
     public void 주문취소() throws Exception {
         //given
+        Member member = createMember();
+        Book item = createBook("시골 JPA", 10000, 10);
 
+        int orderCount = 2;
+        Long orderId = orderService.order(member.getId(), item.getId(), orderCount);
         //when
+        orderService.cancelOrder(orderId);
 
         //then
+        Order getOrder = orderRepository.findOne(orderId);
+
+        assertEquals(OrderStatus.CANCEL, getOrder.getStatus());
+        assertEquals(10, item.getStockQuantity());
     }
     @Test
     public void 상품주문_재고수량초과() throws Exception {
