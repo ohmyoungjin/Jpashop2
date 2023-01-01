@@ -1,5 +1,6 @@
 package jpabook.jpashop.domain.item;
 
+import jpabook.jpashop.service.UpdateItemDto;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -13,4 +14,9 @@ public class Movie extends Item{
 
     private String director;
     private String actor;
+
+    @Override
+    public void changeItem(UpdateItemDto updateItemDto) {
+        System.out.println("movie============================");
+    }
 }

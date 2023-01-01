@@ -2,6 +2,7 @@ package jpabook.jpashop.domain.item;
 
 import jpabook.jpashop.domain.Category;
 import jpabook.jpashop.exception.NotEnoughStockException;
+import jpabook.jpashop.service.UpdateItemDto;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -46,6 +47,16 @@ public abstract class Item {
             throw new NotEnoughStockException("need more stock");
         }
         this.stockQuantity = restStock;
+    }
+
+    /**
+     * 변경 감지용 메서드
+     */
+    public void changeItem(UpdateItemDto updateItemDto) {
+        this.name = updateItemDto.getName();
+        this.price = updateItemDto.getPrice();
+        this.stockQuantity = updateItemDto.getStockQuantity();
+        System.out.println("ITEM=============================");
     }
 
 }
